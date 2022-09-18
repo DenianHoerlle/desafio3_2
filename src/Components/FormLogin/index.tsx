@@ -52,7 +52,7 @@ const Divmy = styled.div`
 interface Props{
     handleLogin?: ()=>void
     userInput: string;
-    setUserInput: ()=>void;
+    setUserInput : React.Dispatch<React.SetStateAction<string>>
 }
 
 export default function LoginForm({handleLogin, userInput, setUserInput}:Props){
@@ -67,7 +67,6 @@ export default function LoginForm({handleLogin, userInput, setUserInput}:Props){
             <Divmy>
                 <Button type="submit" text="Entrar"/>   
             </Divmy>              
-            
         </FormLogin>
         
     );

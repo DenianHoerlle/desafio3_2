@@ -64,10 +64,10 @@ const TitleAfter2 = styled.div`
 export default function Login() {
     const [userInput, setUserInput] = useState("");
     const navigate = useNavigate();
-    const { user, setUser } = useContext(AuthContext);
+    const { setUser } = useContext(AuthContext);
 
     function handleLogin() {
-        setUser(user);
+        setUser(userInput);
         navigate("/Home");
     }
 

@@ -50,23 +50,23 @@ const Divmy = styled.div`
 
 
 interface Props{
-    handleLogin?: ()=>void
+    handleLogin?: ()=>void;
     userInput: string;
-    setUserInput : React.Dispatch<React.SetStateAction<string>>
+    setUserInput : any;
 }
 
 export default function LoginForm({handleLogin, userInput, setUserInput}:Props){
     return(
         <FormLogin onSubmit={handleLogin}>
             <Divmy>
-                <Item1 value={userInput} onChange={setUserInput} type="text" required name="name" id="name" aria-describedby="User name" placeholder="Nome de usuário" />
+                <Item1 value={userInput} onChange={({target}) => setUserInput(target.value)} type="text" required name="name" id="name" aria-describedby="User name" placeholder="Nome de usuário" />
             </Divmy>
             <Divmy>
                 <Item2 type="password" required name="password" id="password" placeholder="Senha" />
-            </Divmy> 
+            </Divmy>
             <Divmy>
                 <Button type="submit" text="Entrar"/>   
-            </Divmy>              
+            </Divmy>
         </FormLogin>
         
     );

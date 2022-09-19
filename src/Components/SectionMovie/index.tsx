@@ -1,6 +1,13 @@
 import React, { useCallback, useMemo, useState } from "react";
-import {FaChevronLeft, FaChevronRight} from "react-icons/fa";
-import {Container, ContentMovies, Movie, ButtonLetf, ButtonRight} from "./styles";
+import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
+
+import {
+    Container,
+    ContentMovies,
+    Movie,
+    ButtonLetf,
+    ButtonRight,
+} from "./styles";
 
 interface SectionMoviesProps {
   movies: MovieProps[];
@@ -42,9 +49,11 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
                 <FaChevronLeft />
             </ButtonLetf>
 
-            <ContentMovies style={{ marginLeft: marginContent, width: MAX_WIDTH_CONTENT }}>
+            <ContentMovies
+                style={{ marginLeft: marginContent, width: MAX_WIDTH_CONTENT }}
+            >
                 {movies.map(movie => (
-                    <Movie key={movie.id}>  
+                    <Movie key={movie.id}>
                         <img
                             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                             alt={`Capa do filme/seriado ${movie.name}`}

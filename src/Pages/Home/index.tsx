@@ -1,10 +1,10 @@
+/* eslint-disable react/jsx-props-no-spreading */
+import React, { useEffect, useState } from "react";
 import NavBar from "../../Components/NavBar";
 import SectionMovies from "../../Components/SectionMovie";
-import { HomeStyle, Container, DivContainer }  from "./style";
 
-
-import { useEffect, useState } from "react";
 import api from "../../services/api";
+import { Container, HomeStyle } from "./style";
 
 interface MovieProps {
   id: string;
@@ -27,7 +27,7 @@ const Home: React.FC = () => {
 
     const apiRoutes: { name: string; route: string }[] = [
         { name: "Em alta", route: "/tv/popular?" },
-        { name: "Populares na Cloneflix", route: "/trending/all/week?" },
+        { name: "Populares", route: "/trending/all/week?" },
         { name: "Melhores Avaliados", route: "/movie/top_rated?" },
         { name: "Lançamentos", route: "/movie/now_playing?" },
         { name: "Ação", route: "/discover/movie?with_genres=28&" },
@@ -48,31 +48,28 @@ const Home: React.FC = () => {
         });
 
         if (sectionsMovies.length === 0) {
-            Promise.all([...urlsAxios])
-                .then(responses => {
-                    const responsesApi = responses.map((response, index) => ({
-                        id: index,
-                        name: apiRoutes[index].name,
-                        movies: response.data.results,
-                    }));
-                    setSectionsMovies(responsesApi);
-                })
-                .catch(errors => {
-                    console.log(errors);
-                });
+            Promise.all([...urlsAxios]).then(responses => {
+                const responsesApi = responses.map((response, index) => ({
+                    id: index,
+                    name: apiRoutes[index].name,
+                    movies: response.data.results,
+                }));
+
+                setSectionsMovies(responsesApi);
+            });
         }
     }, [apiRoutes, sectionsMovies]);
 
     return (
-        <Container>
-            <HomeStyle/>
+        <>
+            <HomeStyle />
             <NavBar />
-            <DivContainer>
+            <Container>
                 {sectionsMovies.map(sectionMovie => (
                     <SectionMovies {...sectionMovie} key={sectionMovie.id} />
                 ))}
-            </DivContainer>
-        </Container>
+            </Container>
+        </>
     );
 };
 

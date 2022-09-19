@@ -29,10 +29,10 @@ export const Container = styled.div`
     svg {
       width: 40px;
       height: 40px;
-      color: #FFFFFF;
+      color: #ffffff;
     }
 
-    visibility: hidden;
+    visibility: visible;
   }
 
   ${media.lessThan("medium")`
@@ -84,17 +84,6 @@ export const Movie = styled.div`
   &:hover {
     cursor: pointer;
   }
-
-  ${media.lessThan("medium")`
-    width: 150px;
-
-    &:hover {
-      img {
-        border-radius: 0px;
-        transform: scale(1);
-      }
-    }
-  `}
 `;
 
 export const ButtonLetf = styled.button`

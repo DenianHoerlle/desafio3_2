@@ -7,10 +7,6 @@ export const HomeStyle = createGlobalStyle `
   }  
 `;
 
-export const Container = styled.div`    
-  padding-bottom: 20px;
-`;
-
-export const DivContainer = styled.div`
-  margin-top: 0px;
+export const Container = styled.main`
+  padding-top: 80px;
 `;

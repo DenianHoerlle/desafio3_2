@@ -1,5 +1,16 @@
 import styled from "styled-components";
-import LoginForm from "../FormLogin";
+
+const BackgroundImg = styled.div`
+    background-image: url(${require("../../assets/img/backimg.png")});
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    left: 0px;
+    top: 0px;
+    background-repeat: no-repeat;
+    background-size: 110%; 
+    background-position: center
+`;
 
 const ContainerLogin = styled.div`
     position: absolute;
@@ -25,6 +36,7 @@ const Title = styled.h1`
     font-family: 'Roboto';
     font-style: normal;
     font-weight: 700;
+    padding: 5% 0;
     font-size: 1.5em;
     line-height: 1em;
     margin-left: 10%;
@@ -58,18 +70,16 @@ const TitleAfter2 = styled.div`
     }
 `;
 
-interface Props{
-    handleLogin?: ()=>void;
-    userInput: string;
-    setUserInput: ()=>void;
+const Logoimg = styled.div`
+    background-image: url(${require("../../assets/img/logo.png")});
+    position: absolute;
+    width: 20vw;
+    height: 10vh;
+    left: 7%;
+    top: 10%;
+    background-repeat: no-repeat;
+    background-size: 100%; 
+    background-position: center
+`;
 
-}
-
-export default function Container({handleLogin, userInput, setUserInput}:Props){
-    return(
-        <ContainerLogin>
-            <Title>Entrar</Title> <TitleAfter2 /> <TitleAfter />
-            <LoginForm userInput={userInput} setUserInput={setUserInput} handleLogin={handleLogin} />
-        </ContainerLogin>
-    );
-}
+export {BackgroundImg, ContainerLogin, Title, TitleAfter, TitleAfter2, Logoimg};

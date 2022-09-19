@@ -33,7 +33,6 @@ const Search: React.FC = () => {
     useEffect(() => {
         const URL_LANGUAGE_AND_KEY = "api_key=680696aacd6dd222b951702b83ddb9e5&language=pt-BR&";
         const URL_QUERY = `&query=${search}&page=1`;
-        console.log("search", search);
         if (search?.length) {
             const urlsAxios = apiRoutes.map(({ route }, index) => {
                 let pageRandom = "1";

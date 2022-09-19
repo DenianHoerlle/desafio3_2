@@ -24,9 +24,7 @@ const NavBarSearch: React.FC = () => {
     }, []);
 
     function handleSearch() {
-        console.log("entrou");
         setSearch(searchInput);
-        // chamada API
     }
 
     return (

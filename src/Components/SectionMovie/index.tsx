@@ -10,16 +10,16 @@ import {
 } from "./styles";
 
 interface SectionMoviesProps {
-  movies: MovieProps[];
-  name: string;
+    movies: MovieProps[];
+    name: string;
 }
 
 interface MovieProps {
-  id: string;
-  name?: string;
-  title?: string;
-  overview: string;
-  poster_path: string;
+    id: string;
+    name?: string;
+    title?: string;
+    overview: string;
+    poster_path: string;
 }
 
 const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
@@ -33,7 +33,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
                 const newValue = stateMargin + (direction === "left" ? -400 : 400);
 
                 const isError =
-          MAX_WIDTH_CONTENT + newValue < window.innerWidth || newValue === 400;
+                    MAX_WIDTH_CONTENT + newValue < window.innerWidth || newValue === 400;
 
                 return isError ? stateMargin : newValue;
             });
@@ -56,6 +56,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
             >
                 {movies.map(movie => (
                     <Movie key={movie.id}>
+                        {/* onClick={seta o valor do modalDescription e abre a modal} */}
                         <img
                             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                             alt={`Capa do filme/seriado ${movie.name}`}

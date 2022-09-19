@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {FaSearch, FaBell} from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
+import { FormLogin } from "../FormLogin/styles";
 
 import { Container, RoutesMenu, Profile } from "./styles";
 
-const NavBar: React.FC = () => {
+// eslint-disable-next-line @typescript-eslint/no-unused-vars
+const NavBarSearch: React.FC = () => {
     const [isBlack, setIsBlack] = useState(false);
 
     useEffect(() => {
@@ -17,6 +19,12 @@ const NavBar: React.FC = () => {
         };
     }, []);
 
+    const navigate = useNavigate();
+
+    function handleSearch(){
+        navigate("/Search");
+    }
+
     return (
         <Container isBlack={isBlack}>
             <RoutesMenu>
@@ -28,7 +36,7 @@ const NavBar: React.FC = () => {
                 </ul>
             </RoutesMenu>
             <Profile>
-                <FaSearch />
+                <FormLogin handleSearch={handleSearch} />
                 <FaBell />
                 <button type="button">
                     <p>{}</p>
@@ -38,4 +46,7 @@ const NavBar: React.FC = () => {
     );
 };
 
-export default NavBar;
+export default NavBarSearch;
+
+
+

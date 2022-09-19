@@ -1,4 +1,4 @@
-import React, { useCallback, useMemo, useState } from "react";
+import React, { useCallback, useEffect, useMemo, useState } from "react";
 import { FaChevronLeft, FaChevronRight } from "react-icons/fa";
 
 import {
@@ -41,6 +41,8 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
         [MAX_WIDTH_CONTENT],
     );
 
+
+
     return (
         <Container>
             <h1>{name}</h1>
@@ -58,7 +60,7 @@ const SectionMovies: React.FC<SectionMoviesProps> = ({ name, movies }) => {
                             src={`https://image.tmdb.org/t/p/w300${movie.poster_path}`}
                             alt={`Capa do filme/seriado ${movie.name}`}
                         />
-                        <p>{movie.name}</p>
+                        <p>{movie.name || movie.title}</p>
                     </Movie>
                 ))}
             </ContentMovies>

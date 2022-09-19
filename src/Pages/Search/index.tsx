@@ -1,4 +1,3 @@
-/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from "react";
 import NavBar from "../../Components/NavBar";
 import SectionMovies from "../../Components/SectionMovie";
@@ -26,12 +25,12 @@ const Search: React.FC = () => {
     );
 
     const apiRoutes: { name: string; route: string }[] = [
-        { name: "Resultados para ${SuaBusca}", route: "/search/company?" },
+        { name: "Resultados para Love", route: "/search/movie?" },
     ];
 
     useEffect(() => {
         const URL_LANGUAGE_AND_KEY ="api_key=680696aacd6dd222b951702b83ddb9e5&language=pt-BR&";
-        const URL_QUERY = "&query=${SuaBusca}&page=1";
+        const URL_QUERY = "&query=love&page=1";
         const urlsAxios = apiRoutes.map(({ route }, index) => {
             let pageRandom = "1";
             // Somente as três primeiras listas são randômicas

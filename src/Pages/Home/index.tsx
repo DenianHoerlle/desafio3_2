@@ -36,11 +36,9 @@ const Home: React.FC = () => {
     ];
 
     useEffect(() => {
-        // const URL_LANGUAGE_AND_KEY = `language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}&page=`;
         const URL_LANGUAGE_AND_KEY ="api_key=680696aacd6dd222b951702b83ddb9e5&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=";
         const urlsAxios = apiRoutes.map(({ route }, index) => {
             let pageRandom = "1";
-            // Somente as três primeiras listas são randômicas
             if (index < 10) pageRandom = (Math.random() * (5 - 1) + 1).toString();
 
             const URL = route.concat(URL_LANGUAGE_AND_KEY).concat(pageRandom);

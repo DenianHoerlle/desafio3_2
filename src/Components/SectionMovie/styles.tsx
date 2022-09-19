@@ -13,6 +13,7 @@ export const Container = styled.div`
 
   h1 {
     z-index: 7;
+    color: #FFF;
   }
 
   > button {
@@ -83,6 +84,10 @@ export const Movie = styled.div`
 
   &:hover {
     cursor: pointer;
+  }
+  p{
+    color: #FFF;
+    padding: 0 10px;
   }
 `;
 

@@ -1,12 +1,16 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
-import { FormLogin } from "../FormLogin/styles";
+import { FormSearch } from "../";
+import { FaSearch, FaBell } from "react-icons/fa";
+import { Context } from "../../context";
 
 import { Container, RoutesMenu, Profile } from "./styles";
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const NavBarSearch: React.FC = () => {
+    const { setSearch } = useContext(Context);
     const [isBlack, setIsBlack] = useState(false);
+    const [searchInput, setSearchInput] = useState("");
 
     useEffect(() => {
         window.addEventListener("scroll", () => setIsBlack(window.scrollY > 10));
@@ -19,10 +23,10 @@ const NavBarSearch: React.FC = () => {
         };
     }, []);
 
-    const navigate = useNavigate();
-
-    function handleSearch(){
-        navigate("/Search");
+    function handleSearch() {
+        console.log("entrou");
+        setSearch(searchInput);
+        // chamada API
     }
 
     return (
@@ -36,17 +40,14 @@ const NavBarSearch: React.FC = () => {
                 </ul>
             </RoutesMenu>
             <Profile>
-                <FormLogin handleSearch={handleSearch} />
-                <FaBell />
-                <button type="button">
-                    <p>{}</p>
+                <FormSearch setSearchInput={setSearchInput} searchInput={searchInput} />
+                <button onClick={() => handleSearch()} >
+                    <FaSearch />
                 </button>
+                <FaBell />
             </Profile>
         </Container>
     );
 };
 
 export default NavBarSearch;
-
-
-

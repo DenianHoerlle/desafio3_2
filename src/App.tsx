@@ -1,13 +1,13 @@
-import {router} from "./Router";
-import {RouterProvider} from "react-router-dom";
-import AuthProvider from "./context";
+import { router } from "./Router";
+import { RouterProvider } from "react-router-dom";
+import Provider from "./context";
 import { GlobalStyle } from "./Components/Style/globalStyle";
 
 export default function App() {
     return (
-        <AuthProvider>
-            <GlobalStyle/>
+        <Provider>
+            <GlobalStyle />
             <RouterProvider router={router} />
-        </AuthProvider>
+        </Provider>
     );
 }

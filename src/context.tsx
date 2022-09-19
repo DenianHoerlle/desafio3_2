@@ -2,21 +2,24 @@
 import React from "react";
 
 
-export type AuthContextType = {
-    user: string|null;
+export type ContextType = {
+    user: string | null;
     setUser: any;
+    search: string | null;
+    setSearch: any;
 };
 
 interface FCProps {
     children: React.ReactNode;
 }
 
-export const AuthContext = React.createContext<AuthContextType>({user: null, setUser: () => null});
+export const Context = React.createContext<ContextType>({ user: null, setUser: () => null, search: null, setSearch: () => null });
 
-const AuthProvider: React.FC<FCProps> = ({ children }) => {
-    const [user, setUser] = React.useState<string|null>(null);
+const Provider: React.FC<FCProps> = ({ children }) => {
+    const [user, setUser] = React.useState<string | null>(null);
+    const [search, setSearch] = React.useState<string | null>(null);
 
-    return <AuthContext.Provider value={{ user, setUser }}>{children}</AuthContext.Provider>;
+    return <Context.Provider value={{ user, setUser, search, setSearch }}>{children}</Context.Provider>;
 };
 
-export default AuthProvider;
+export default Provider;

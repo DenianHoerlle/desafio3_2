@@ -4,7 +4,7 @@ import NavBar from "../../Components/NavBar";
 import SectionMovies from "../../Components/SectionMovie";
 
 import api from "../../services/api";
-import { Container, HomeStyle } from "./style";
+import { Container, HomeStyle } from "../Home/style";
 
 interface MovieProps {
   id: string;
@@ -20,30 +20,23 @@ interface SectionsMoviesProps {
   movies: MovieProps[];
 }
 
-const Home: React.FC = () => {
+const Search: React.FC = () => {
     const [sectionsMovies, setSectionsMovies] = useState<SectionsMoviesProps[]>(
         [],
     );
 
     const apiRoutes: { name: string; route: string }[] = [
-        { name: "Em alta", route: "/tv/popular?" },
-        { name: "Populares", route: "/trending/all/week?" },
-        { name: "Melhores Avaliados", route: "/movie/top_rated?" },
-        { name: "Lançamentos", route: "/movie/now_playing?" },
-        { name: "Ação", route: "/discover/movie?with_genres=28&" },
-        { name: "Ficção científica", route: "/discover/movie?with_genres=878&" },
-        { name: "Romance", route: "/discover/movie?with_genres=10749&" },
+        { name: "Resultados para ${SuaBusca}", route: "/search/company?" },
     ];
 
     useEffect(() => {
-        // const URL_LANGUAGE_AND_KEY = `language=pt-BR&api_key=${process.env.REACT_APP_API_KEY}&page=`;
-        const URL_LANGUAGE_AND_KEY ="api_key=680696aacd6dd222b951702b83ddb9e5&language=pt-BR&sort_by=popularity.desc&include_adult=false&include_video=false&page=";
+        const URL_LANGUAGE_AND_KEY ="api_key=680696aacd6dd222b951702b83ddb9e5&language=pt-BR&";
+        const URL_QUERY = "&query=${SuaBusca}&page=1";
         const urlsAxios = apiRoutes.map(({ route }, index) => {
             let pageRandom = "1";
             // Somente as três primeiras listas são randômicas
             if (index < 10) pageRandom = (Math.random() * (5 - 1) + 1).toString();
-
-            const URL = route.concat(URL_LANGUAGE_AND_KEY).concat(pageRandom);
+            const URL = route.concat(URL_LANGUAGE_AND_KEY).concat(pageRandom).concat(URL_QUERY);
             return api.get(URL);
         });
 
@@ -73,4 +66,4 @@ const Home: React.FC = () => {
     );
 };
 
-export default Home;
+export default Search;

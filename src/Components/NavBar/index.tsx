@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import {FaSearch, FaBell} from "react-icons/fa";
+import { FaSearch, FaBell } from "react-icons/fa";
+import { useNavigate } from "react-router-dom";
 
 import { Container, RoutesMenu, Profile } from "./styles";
 
 const NavBar: React.FC = () => {
+    const navigate = useNavigate();
     const [isBlack, setIsBlack] = useState(false);
 
     useEffect(() => {
@@ -20,7 +22,7 @@ const NavBar: React.FC = () => {
     return (
         <Container isBlack={isBlack}>
             <RoutesMenu>
-                <img src={require("../../assets/img/logo.png")} alt="dahdjahdkja" />
+                <img src={require("../../assets/img/logo.png")} alt="logo" onClick={() => navigate("/Home", { replace: true })} />
                 <ul>
                     <li style={{ fontWeight: "bold" }}>Inicio</li>
                     <li>Series</li>
@@ -28,11 +30,12 @@ const NavBar: React.FC = () => {
                 </ul>
             </RoutesMenu>
             <Profile>
-                <FaSearch />
-                <FaBell />
-                <button type="button">
-                    <p>{}</p>
+                <button onClick={() => {
+                    navigate("/Search", { replace: true });
+                }}>
+                    <FaSearch />
                 </button>
+                <FaBell />
             </Profile>
         </Container>
     );

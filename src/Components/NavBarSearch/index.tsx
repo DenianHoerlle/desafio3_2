@@ -9,6 +9,7 @@ import { Container, RoutesMenu, Profile } from "./styles";
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 const NavBarSearch: React.FC = () => {
     const { setSearch } = useContext(Context);
+    const navigate = useNavigate();
     const [isBlack, setIsBlack] = useState(false);
     const [searchInput, setSearchInput] = useState("");
 
@@ -30,7 +31,7 @@ const NavBarSearch: React.FC = () => {
     return (
         <Container isBlack={isBlack}>
             <RoutesMenu>
-                <img src={require("../../assets/img/logo.png")} alt="dahdjahdkja" />
+                <img src={require("../../assets/img/logo.png")} alt="logo" onClick={() => navigate("/Home", { replace: true })} />
                 <ul>
                     <li style={{ fontWeight: "bold" }}>Inicio</li>
                     <li>Series</li>
